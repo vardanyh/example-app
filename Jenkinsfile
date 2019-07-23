@@ -14,6 +14,12 @@ node {
         app = docker.build("vardanyh/example-app")
     }
 
+    stage('Test') {
+           app.inside {
+                 sh 'npm test'
+           }
+    }
+
     stage('Push image') {
         /* Finally, we'll push the image into Docker Hub */
 
